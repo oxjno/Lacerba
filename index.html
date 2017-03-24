@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title>Lacerba Video Blog</title>
-	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.css" rel="stylesheet">
 
@@ -38,19 +38,24 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="defaultNavbar1">
 				<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Home</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Home<span class="caret"></span></a>
+						<ul  class="dropdown-menu" role="menu">
+							<li><a href="https://videoblog.lacerba.io/feed/">Latest videos</a></li>
+							<li><a href="#">Credits</a></li>
+						</ul>
+					</li>
 				
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Finanziatori<span class="caret"></span></a>
 						<ul  class="dropdown-menu" role="menu">
-								<li><a href="https://videoblog.lacerba.io/category/finanziatori/feed/">Tutti</a> </li>
+								<li><a href="https://videoblog.lacerba.io/category/finanziatori/feed/">Finanziatori</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/finanziatori/acceleratore/feed/">Acceleratore</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/finanziatori/corporate-venture/feed/">Corporate Venture</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/finanziatori/crowdfunding/feed/">Crowdfunding</a> </li>
 							</ul>
 					</li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Le aree d'insegnamento Lacerba<span class="caret"></span></a>
+						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Aree d'insegnamento<span class="caret"></span></a>
 						<ul  class="dropdown-menu" role="menu">
-								<li><a href="https://videoblog.lacerba.io/category/le-aree-dinsegnamento-lacerba/feed/">Tutti</a> </li>
+								<li><a href="https://videoblog.lacerba.io/category/le-aree-dinsegnamento-lacerba/feed/">Aree d'insegnamento</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/le-aree-dinsegnamento-lacerba/business/feed/">Business</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/le-aree-dinsegnamento-lacerba/design/feed/">Design</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/le-aree-dinsegnamento-lacerba/marketing-advertising/feed/">Marketing / Advertising</a> </li>
@@ -62,7 +67,7 @@
 					</li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Startup<span class="caret"></span></a>
 						<ul  class="dropdown-menu" role="menu">
-								<li><a href="https://videoblog.lacerba.io/category/startup/feed/">Tutti</a> </li>
+								<li><a href="https://videoblog.lacerba.io/category/startup/feed/">Startup</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/startup/ecommerce/feed/">Ecommerce</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/startup/fintech/feed/">Fintech</a> </li>
 								<li><a href="https://videoblog.lacerba.io/category/startup/gaming/feed/">Gaming</a> </li>
@@ -73,11 +78,6 @@
 								<li><a href="https://videoblog.lacerba.io/category/startup/social-network/feed/">Social Network</a> </li>
 							</ul>
 					</li>
-
-					
-					
-				<li class="divider"></li>
-				<li><a href="#">Credits</a></li>
 			</ul>
 			</div>
 		<!-- /.navbar-collapse --> 
@@ -90,26 +90,29 @@
 				<h1 id="logo-esteso" class="text-center"><img src="img/logo-esteso.svg" width="100%" alt="Lacerba.io"/></h1>
 			</div>
 	</div>
-		<hr>
 	</div>
 <div class="container">
 		<div class="row">
 		<div class="col-md-12">
+				<h1 id="pageTitle">Latest videos</h1>
+				<div id="loader">
+				<img src="img/loading.svg" alt=""/><br><br>
+				Loading
+				</div>
 				<div id="rss-feeds"></div>
 			</div>
 	</div>
 	</div>
 
 <div class="container">
-<div id="footer" class="row">
+	<div id="footer" class="row">
 		<div class="text-center col-md-6 col-md-offset-3">
-		<p>Copyright &copy; 2017 &middot; All Rights Reserved &middot; CRAFTAIN INC.</p>
-		<p>Developed by <a href="https://oxjno.com/">Oxjno Sviluppo Web</a></p>
+			<p>Copyright &copy; 2017 &middot; CRAFTAIN INC.</p>
+			<p>Developed by <a href="https://oxjno.com/">Oxjno Sviluppo Web</a></p>
+		</div>
 	</div>
-	</div>
-    </div>
-
 </div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
 <script src="js/jquery-1.11.3.min.js"></script> 
 
