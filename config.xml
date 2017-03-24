@@ -14,7 +14,7 @@
   <content src="index.html" />
   <access origin="*" />
   <vs:features />
-  <preference name="orientation" value="portrait" />
+  <!--<preference name="orientation" value="portrait" />-->
   <preference name="SplashScreen" value="screen" />
   <preference name="KeepRunning" value="false"/>
   <preference name="LoadUrlTimeoutValue" value="10000"/>
@@ -50,6 +50,6 @@
   <plugin name="cordova-plugin-whitelist" source="npm" />
   <plugin name="cordova-plugin-network-information" source="npm" />
   <plugin name="cordova-plugin-dialogs" source="npm" />
-
+  
   
 </widget>

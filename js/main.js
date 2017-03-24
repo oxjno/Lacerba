@@ -1,5 +1,5 @@
 $( document ).ready(function() {
-	
+
 	//plugin jquery.rss.js http://www.jqueryscript.net/social-media/Tiny-jQuery-Based-RSS-Reader-Custom-Template-RSS-js.html
 	/*Caricamento iniziale degli ultimi video*/
 	$("#rss-feeds")
@@ -56,4 +56,4 @@ $( document ).ready(function() {
 	});
 	
 	
-  });
+});
