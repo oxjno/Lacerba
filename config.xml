@@ -46,6 +46,8 @@
     <splash src="res/screens/android/screen-ldpi-portrait.png" density="port-ldpi" />
     <splash src="res/screens/android/screen-mdpi-portrait.png" density="port-mdpi" />
     <splash src="res/screens/android/screen-xhdpi-portrait.png" density="port-xhdpi" />
+    <splash src="res/screens/android/screen-xxhdpi-portrait.png" density="port-xxhdpi" />
+    <splash src="res/screens/android/screen-xxxhdpi-portrait.png" density="port-xxxhdpi" />
   </platform>
 
   <!-- Support for Cordova 5.0.0 plugin system -->
