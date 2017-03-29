@@ -14,15 +14,16 @@
   <content src="index.html" />
   <access origin="*" />
   <vs:features />
-  <preference name="orientation" value="all" />
+  <preference name="orientation" value="default" />
   <preference name="SplashScreenDelay" value="3000" />
   <preference name="AutoHideSplashScreen" value="true" />  
-  <preference name="SplashScreen" value="res/screen/android" />  
+  <preference name="SplashScreen" value="res/screen/android" />
+  <preference name="SplashScreen" value="splash" />  
   <preference name="SplashMaintainAspectRatio" value="true" />
   
   
   <preference name="KeepRunning" value="false"/>
-  <preference name="LoadUrlTimeoutValue" value="20000"/>
+  <preference name="LoadUrlTimeoutValue" value="30000"/>
   <preference name="InAppBrowserStorageEnabled" value="true"/>
   l
   <preference name="AndroidPersistentFileLocation" value="Internal" />
@@ -42,17 +43,26 @@
     <icon src="res/icons/android/icon-96-xhdpi.png" density="xhdpi" />
     <icon src="res/icons/android/icon-144-xxhdpi.png" density="xxhdpi" />
     <icon src="res/icons/android/icon-192-xxxhdpi.png" density="xxxhdpi" />
-    <splash src="res/screens/android/screen-hdpi-portrait.png" density="port-hdpi" />
-    <splash src="res/screens/android/screen-ldpi-portrait.png" density="port-ldpi" />
-    <splash src="res/screens/android/screen-mdpi-portrait.png" density="port-mdpi" />
-    <splash src="res/screens/android/screen-xhdpi-portrait.png" density="port-xhdpi" />
-    <splash src="res/screens/android/screen-xxhdpi-portrait.png" density="port-xxhdpi" />
-    <splash src="res/screens/android/screen-xxxhdpi-portrait.png" density="port-xxxhdpi" />
+    <splash src="res/screens/android/screen-hdpi-portrait.png" qualifier="port-hdpi" />
+    <splash src="res/screens/android/screen-ldpi-portrait.png" qualifier="port-ldpi" />
+    <splash src="res/screens/android/screen-mdpi-portrait.png" qualifier="port-mdpi" />
+    <splash src="res/screens/android/screen-xhdpi-portrait.png" qualifier="port-xhdpi" />
+    <splash src="res/screens/android/screen-xxhdpi-portrait.png" qualifier="port-xxhdpi" />
+    <splash src="res/screens/android/screen-xxxhdpi-portrait.png" qualifier="port-xxxhdpi" />
+    <splash src="splash.png" />
   </platform>
-
+  
+  
   <plugin name="cordova-plugin-whitelist" source="npm" />
   <plugin name="cordova-plugin-network-information" source="npm" />
   <plugin name="cordova-plugin-dialogs" source="npm" />
-  <plugin name="cordova-plugin-splashscreen" source="npm" />
+  <plugin name="cordova-plugin-splashscreen" source="npm">
+      <preference name="SplashScreen" value="splash" />
+      <preference name="AutoHideSplashScreen" value="true" />
+      <preference name="SplashScreenDelay" value="3000" />
+      <preference name="SplashMaintainAspectRatio" value="true" />
+      <preference name="FadeSplashScreen" value="false"/>
+      <preference name="ShowSplashScreenSpinner" value="false" />
+  </plugin>  
   
 </widget>
