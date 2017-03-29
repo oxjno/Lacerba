@@ -1,5 +1,7 @@
-document.addEventListener("deviceready", function(){
-	onDeviceReady();
+$(document).ready(function(){
+	document.addEventListener("deviceready", function(){
+		onDeviceReady();
+	});
 });
 
 
