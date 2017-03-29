@@ -1,6 +1,6 @@
 document.addEventListener("deviceready", function(){
 	onDeviceReady();
-}
+});
 
 
 function onDeviceReady(){
