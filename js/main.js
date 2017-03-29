@@ -1,5 +1,46 @@
 $( document ).ready(function() {
 	
+	
+	//https://gist.github.com/anhang/1096149
+	// Changed slightly for testing speed (https://gist.github.com/porkeypop/1096149)
+	var ls2 = {
+		save : function(key, jsonData, expirationMS){
+			if (typeof (Storage) == "undefined") { return false; }
+			//var expirationMS = expirationMin * 60 * 1000;
+			var record = {value: JSON.stringify(jsonData), timestamp: new Date().getTime() + expirationMS}
+			localStorage.setItem(key, JSON.stringify(record));
+			return jsonData;
+		},
+		load : function(key){
+			if (typeof (Storage) == "undefined") { return false; }
+			var record = JSON.parse(localStorage.getItem(key));
+			if (!record){return false;}
+			return (new Date().getTime() < record.timestamp && JSON.parse(record.value));
+		}
+	}
+	
+	/*
+	// Set Data
+	document.getElementById('output').innerHTML += 0 + ': ' + ls2.load('b') + '<br>'
+	ls2.save('a', '{mykey:"myvalue"}', 1200);
+	ls2.load('a');
+
+	// Check Data and output to screen
+	var checkVal = setInterval(myTimer, 200);
+	var i = 200;
+	function myTimer() {
+		i += 200;
+	  var result = ls2.load('a');	
+		document.getElementById('output').innerHTML += i + ': ' + result + '<br>';
+	  if(result === false) {
+		clearInterval(checkVal);
+	  }
+	}
+	*/
+	
+		
+	
+	
 	/*Caricamento iniziale degli ultimi video*/
 	$.ajax({
 	  url: "https://videoblog.lacerba.io/feed/json?callback=callback",
