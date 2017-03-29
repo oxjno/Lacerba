@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	console.log('document ready');
-	document.addEventListener("deviceready", onDeviceReady, false);
+	//document.addEventListener("deviceready", onDeviceReady, false);
 	
-	function onDeviceReady(){
-		console.log('function onDeviceReady');
+	//function onDeviceReady(){
+		//console.log('function onDeviceReady');
 		//https://gist.github.com/anhang/1096149
 		// Changed slightly for testing speed (https://gist.github.com/porkeypop/1096149)
 		var ls2 = {
@@ -151,7 +151,7 @@ $(document).ready(function(){
 				$("#rss-feeds").show();
 			}	
 		});
-	}//end onDeviceReady
+	//}//end onDeviceReady
 	
 	
 });//end document ready
