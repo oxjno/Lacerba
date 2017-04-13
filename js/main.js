@@ -1,3 +1,31 @@
+
+//https://gist.github.com/anhang/1096149
+// Changed slightly for testing speed (https://gist.github.com/porkeypop/1096149)
+var ls2 = {
+	save: function (key, jsonData, expirationMS) {
+		if (typeof (Storage) == "undefined") {
+			return false;
+		}
+		//var expirationMS = expirationMin * 60 * 1000;
+		var record = {
+			value: JSON.stringify(jsonData),
+			timestamp: new Date().getTime() + expirationMS
+		}
+		localStorage.setItem(key, JSON.stringify(record));
+		return jsonData;
+	},
+	load: function (key) {
+		if (typeof (Storage) == "undefined") {
+			return false;
+		}
+		var record = JSON.parse(localStorage.getItem(key));
+		if (!record) {
+			return false;
+		}
+		return (new Date().getTime() < record.timestamp && JSON.parse(record.value));
+	}
+}
+	
 /*Caricamento iniziale degli ultimi video*/
 function homePage() {
 	$(window).scrollTop(0);
@@ -107,56 +135,22 @@ function myDeviceReady() {
 	}
 
 
-
-	//https://gist.github.com/anhang/1096149
-	// Changed slightly for testing speed (https://gist.github.com/porkeypop/1096149)
-	var ls2 = {
-		save: function (key, jsonData, expirationMS) {
-			if (typeof (Storage) == "undefined") {
-				return false;
-			}
-			//var expirationMS = expirationMin * 60 * 1000;
-			var record = {
-				value: JSON.stringify(jsonData),
-				timestamp: new Date().getTime() + expirationMS
-			}
-			localStorage.setItem(key, JSON.stringify(record));
-			return jsonData;
-		},
-		load: function (key) {
-			if (typeof (Storage) == "undefined") {
-				return false;
-			}
-			var record = JSON.parse(localStorage.getItem(key));
-			if (!record) {
-				return false;
-			}
-			return (new Date().getTime() < record.timestamp && JSON.parse(record.value));
-		}
-	}
-
-
-
 	homePage();
+	
 	$("#logoTop").click(function (e) {
 		homePage();
 	});
-
-
-
 
 	$("#searchForm").on("submit", function (e) {
 		e.preventDefault();
 		searchBlog();
 	});
+	
 	$("#search").on('keyup', function (e) {
 		if (e.keyCode == 13) {
 			searchBlog();
 		}
 	});
-
-
-
 
 	/*Click sul menu*/
 	$(".dropdown-menu a").click(function (e) {
@@ -249,7 +243,8 @@ function myDeviceReady() {
 			$("#rss-feeds").show();
 		}
 	});
-} //end onDeviceReady
+} //end myDeviceReady
+
 $(document).ready(function () {
 	console.log('document ready');
 	//	
@@ -261,3 +256,4 @@ $(document).ready(function () {
 		myDeviceReady(); //this is the browser
 	}
 }); //end document ready
+document.addEventListener("deviceready", myDeviceReady, false);
