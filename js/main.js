@@ -20,14 +20,7 @@ $(document).ready(function(){
 	}
 	
 	
-	
-	function isPhoneGap() {
-		return (window.cordova || window.PhoneGap || window.phonegap) 
-		&& /^file:\/{3}[^\/]/i.test(window.location.href) 
-		&& /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
-	}
-	
-	if ( isPhoneGap() ) {
+	if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
 	  console.log('we are in phonegap');
 	  document.addEventListener("deviceready", onDeviceReady, false);
 	  document.addEventListener("offline", onOffline, false);
