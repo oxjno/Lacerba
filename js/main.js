@@ -1,9 +1,52 @@
 $(document).ready(function(){
 	console.log('document ready');
-	//document.addEventListener("deviceready", onDeviceReady, false);
+	//
+
+	function checkConnection() {
+		var networkState = navigator.connection.type;
+
+		var states = {};
+		states[Connection.UNKNOWN]  = 'Unknown connection';
+		states[Connection.ETHERNET] = 'Ethernet connection';
+		states[Connection.WIFI]     = 'WiFi connection';
+		states[Connection.CELL_2G]  = 'Cell 2G connection';
+		states[Connection.CELL_3G]  = 'Cell 3G connection';
+		states[Connection.CELL_4G]  = 'Cell 4G connection';
+		states[Connection.CELL]     = 'Cell generic connection';
+		states[Connection.NONE]     = 'No network connection';
+
+		alert('Connection type: ' + states[networkState]);
+		return states[networkState];
+	}
 	
-	//function onDeviceReady(){
-		//console.log('function onDeviceReady');
+	
+	
+	function isPhoneGap() {
+		return (window.cordova || window.PhoneGap || window.phonegap) 
+		&& /^file:\/{3}[^\/]/i.test(window.location.href) 
+		&& /ios|iphone|ipod|ipad|android/i.test(navigator.userAgent);
+	}
+	
+	if ( isPhoneGap() ) {
+	  document.addEventListener("deviceready", onDeviceReady, false);
+	  document.addEventListener("offline", onOffline, false);
+		function onOffline() {
+			// Handle the offline event
+			alert('Internet connection lost!');
+		}
+		console.log( checkConnection() );
+	} else {
+	  onDeviceReady(); //this is the browser
+	}
+	
+	
+	
+	
+	
+	
+	
+	function onDeviceReady(){
+		console.log('function onDeviceReady');
 		//https://gist.github.com/anhang/1096149
 		// Changed slightly for testing speed (https://gist.github.com/porkeypop/1096149)
 		var ls2 = {
@@ -25,8 +68,13 @@ $(document).ready(function(){
 
 
 		/*Caricamento iniziale degli ultimi video*/
-		currentURL = "https://videoblog.lacerba.io/feed/json?callback=callback";
-		var cached = ls2.load(currentURL);	
+		function homePage(){
+			$(window).scrollTop(0);
+			$('#pageTitle').text('Latest videos');
+			$("#loader").fadeIn();
+			$("#rss-feeds").empty();
+			currentURL = "https://videoblog.lacerba.io/feed/json?callback=callback";
+			var cached = ls2.load(currentURL);	
 			if(cached === false) {
 				$.ajax({
 				  url: "https://videoblog.lacerba.io/feed/json?callback=callback",
@@ -57,6 +105,62 @@ $(document).ready(function(){
 				$("#loader").hide();
 				$("#rss-feeds").show();
 			}
+		}
+	
+		homePage();
+		$("#logoTop").click(function(e) {
+			homePage();
+		});
+		
+	
+function searchBlog(){
+	console.log('https://videoblog.lacerba.io/wp-json/wp/v2/posts?search='+$("#search").val() );
+		
+		$(window).scrollTop(0);
+		$('#pageTitle').text('Search results');
+		$("#loader").fadeIn();
+		$("#rss-feeds").empty();
+		
+		$.ajax({
+		  url: 'https://videoblog.lacerba.io/wp-json/wp/v2/posts?search='+$("#search").val(),
+		  method: "GET",
+		  dataType: "json",
+		  data: '',
+		  success: function( data, status, jqxhr ){
+			console.log(data);
+			  if(data.length>0){
+			$.each(data, function(index, element) {
+			   $('#rss-feeds').append($('<div class="entry"><a href="'+data[index].link+'feed/json" class="entry"><h3>'+data[index].title.rendered+'</h3></a></div>'
+				));
+			});
+			  }else{
+				  $('#rss-feeds').append($('<div class="entry">Nothing found :(</div>'));
+			  }
+			$("#loader").hide();
+			$("#rss-feeds").show();
+		  },
+		  error: function( jqxhr, status, error ){
+			console.log( "Something went wrong!" );
+			$('#rss-feeds').append($('<div class="entry">Nothing found :(</div>'));
+			$("#loader").hide();
+			$("#rss-feeds").show();
+		  }
+		});
+		$("#search").val('')
+}
+		
+$("#searchForm").on("submit", function(e) {
+	e.preventDefault();
+	searchBlog();
+});		
+$("#search").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+      searchBlog();  
+    }
+});
+
+
+	
 
 		/*Click sul menu*/
 		$(".dropdown-menu a").click(function(e) {
@@ -151,7 +255,7 @@ $(document).ready(function(){
 				$("#rss-feeds").show();
 			}	
 		});
-	//}//end onDeviceReady
+	}//end onDeviceReady
 	
 	
 });//end document ready

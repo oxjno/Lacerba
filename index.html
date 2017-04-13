@@ -10,7 +10,7 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/jquery-1.11.3.min.js"></script> 
+    <script src="js/jquery-3.2.1.min.js"></script> 
 	<script src="js/bootstrap.js"></script> 
 	<script src="js/main.js"></script>
 	
@@ -20,13 +20,13 @@
 		<div class="container-fluid">
 		<div class="row">
 				<div class="navbar-header">
-				<div class="col-xs-2"> <img src="img/logo-icona.svg" alt="Lacerba.io" width="50" /> </div>
+				<div class="col-xs-2"> <img src="img/logo-icona.svg" alt="Lacerba.io" width="50" id="logoTop" /> </div>
 				<div class="col-xs-8">
-						<form class="" role="search">
-						<div class="form-group">
-								<input type="text" class="form-control search" placeholder="Search">
+						<form id="searchForm" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control search" name="search" placeholder="Search" id="search">
 							</div>
-					</form>
+						</form>
 					</div>
 				<div class="col-xs-2">
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -39,7 +39,6 @@
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Home<span class="caret"></span></a>
 						<ul  class="dropdown-menu" role="menu">
 							<li><a href="https://videoblog.lacerba.io/feed/">Latest videos</a></li>
-							<li><a href="#">Credits</a></li>
 						</ul>
 					</li>
 				
@@ -88,7 +87,8 @@
 				<h1 id="logo-esteso" class="text-center"><img src="img/logo-esteso.svg" width="100%" alt="Lacerba.io"/></h1>
 			</div>
 	</div>
-	</div>
+</div>
+
 <div class="container">
 		<div class="row">
 		<div class="col-md-12">
@@ -100,7 +100,7 @@
 				<div id="rss-feeds"></div>
 			</div>
 	</div>
-	</div>
+</div>
 
 <div class="container">
 	<div id="footer" class="row">
