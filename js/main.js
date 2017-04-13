@@ -15,7 +15,7 @@ $(document).ready(function(){
 		states[Connection.CELL]     = 'Cell generic connection';
 		states[Connection.NONE]     = 'No network connection';
 
-		alert('Connection type: ' + states[networkState]);
+		console.log('Connection type: ' + states[networkState]);
 		return states[networkState];
 	}
 	
@@ -28,14 +28,16 @@ $(document).ready(function(){
 	}
 	
 	if ( isPhoneGap() ) {
+	  console.log('we are in phonegap');
 	  document.addEventListener("deviceready", onDeviceReady, false);
 	  document.addEventListener("offline", onOffline, false);
 		function onOffline() {
 			// Handle the offline event
-			alert('Internet connection lost!');
+			console.log('Internet connection lost!');
 		}
 		console.log( checkConnection() );
 	} else {
+	  console.log('we are on desktop');
 	  onDeviceReady(); //this is the browser
 	}
 	
@@ -115,7 +117,7 @@ $(document).ready(function(){
 	
 function searchBlog(){
 	console.log('https://videoblog.lacerba.io/wp-json/wp/v2/posts?search='+$("#search").val() );
-		
+		$('#search').blur();
 		$(window).scrollTop(0);
 		$('#pageTitle').text('Search results');
 		$("#loader").fadeIn();
