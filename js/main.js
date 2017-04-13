@@ -256,4 +256,3 @@ $(document).ready(function () {
 		myDeviceReady(); //this is the browser
 	}
 }); //end document ready
-document.addEventListener("deviceready", myDeviceReady, false);
