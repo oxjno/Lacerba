@@ -13,7 +13,14 @@
 	<script src="js/bootstrap.js"></script> 
 	<script src="js/main.js"></script>
 	<script>
-		document.addEventListener("deviceready", myDeviceReady, false);
+		 window.onload = function(){
+			 console.log('window load');
+            $(document).ready(function(e) {
+				console.log('document ready');
+				document.addEventListener("deviceready", myDeviceReady, false);
+				console.log('listner added');
+			});
+		}
 	</script>
 	</head>
 	<body>
