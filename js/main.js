@@ -1,34 +1,11 @@
 $(document).ready(function(){
 	console.log('document ready');
-	//
-
-	function checkConnection() {
-		var networkState = navigator.connection.type;
-
-		var states = {};
-		states[Connection.UNKNOWN]  = 'Unknown connection';
-		states[Connection.ETHERNET] = 'Ethernet connection';
-		states[Connection.WIFI]     = 'WiFi connection';
-		states[Connection.CELL_2G]  = 'Cell 2G connection';
-		states[Connection.CELL_3G]  = 'Cell 3G connection';
-		states[Connection.CELL_4G]  = 'Cell 4G connection';
-		states[Connection.CELL]     = 'Cell generic connection';
-		states[Connection.NONE]     = 'No network connection';
-
-		console.log('Connection type: ' + states[networkState]);
-		return states[networkState];
-	}
-	
+	//	
 	
 	if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
 	  console.log('we are in phonegap');
 	  document.addEventListener("deviceready", onDeviceReady, false);
-	  document.addEventListener("offline", onOffline, false);
-		function onOffline() {
-			// Handle the offline event
-			console.log('Internet connection lost!');
-		}
-		console.log( checkConnection() );
+
 	} else {
 	  console.log('we are on desktop');
 	  onDeviceReady(); //this is the browser
@@ -42,6 +19,38 @@ $(document).ready(function(){
 	
 	function onDeviceReady(){
 		console.log('function onDeviceReady');
+		
+		
+		if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
+			
+			document.addEventListener("offline", onOffline, false);
+			document.addEventListener("backbutton", onBackKeyDown, false);
+			
+			function onOffline() {
+				console.log('Internet connection lost!');
+				navigator.notification.alert('Internet connection not available!', alertDismissed, 'Warning', 'OK' );
+			}
+			
+			function onBackKeyDown(e) {
+				e.preventDefault();
+				navigator.notification.confirm("Sei sicuro di voler uscire?", onConfirm, "Attenzione", "Si,No"); 
+			}
+
+			function onConfirm(button) {
+				if(button==2){//If User selected No, then we just do nothing
+					return;
+				}else{
+					navigator.app.exitApp();// Otherwise we quit the app.
+				}
+			}
+			
+			if(!navigator.onLine){
+				navigator.notification.alert('Internet connection not available!', alertDismissed, 'Warning', 'OK' );
+			}
+		}
+	
+		
+		
 		//https://gist.github.com/anhang/1096149
 		// Changed slightly for testing speed (https://gist.github.com/porkeypop/1096149)
 		var ls2 = {
