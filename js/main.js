@@ -260,4 +260,4 @@ $(document).ready(function () {
 		console.log('we are on desktop');
 		myDeviceReady(); //this is the browser
 	}
-); //end document ready
+}); //end document ready
