@@ -247,12 +247,11 @@ function myDeviceReady() {
 
 $(document).ready(function () {
 	console.log('document ready');
-	//	
 	if (navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
 		console.log('we are in phonegap');
-		document.addEventListener("deviceready", myDeviceReady, false);
+		//document.addEventListener("deviceready", myDeviceReady, false);
 	} else {
 		console.log('we are on desktop');
-		myDeviceReady(); //this is the browser
 	}
+	myDeviceReady();
 }); //end document ready
